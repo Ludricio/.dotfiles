@@ -4,3 +4,12 @@ VIM="nvim"
 
 export GIT_EDITOR=$VIM
 
+#----------------
+#zsh-autocomplete
+
+bindkey              '^I' menu-select
+bindkey "$terminfo[kcbt]" menu-select
+zstyle ':autocomplete:*' delay 0.1  # seconds (float)
+zstyle ':autocomplete:*' delay 0.1  # seconds (float)
+bindkey -M menuselect              '^I'         menu-complete
+bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
