@@ -1,0 +1,6 @@
+# Create the parent directory if it doesn't exist
+
+VIM="nvim"
+
+export GIT_EDITOR=$VIM
+
