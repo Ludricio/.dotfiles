@@ -20,6 +20,11 @@ sudo apt install ripgrep -y
 sudo apt install fd-find -y
 sudo apt install zip -y
 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+export NVM_DIR="$HOME/.config/nvm"
+nvm install 21
+nvm use 21
+
 cd $DOTFILES
 git submodule update --init
 
