@@ -1,4 +1,5 @@
-# Create the parent directory if it doesn't exist
+
+unsetopt AUTO_CD
 
 VIM="nvim"
 

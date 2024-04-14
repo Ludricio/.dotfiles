@@ -13,6 +13,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_BIN_HOME="$HOME/.local/bin"
+export PATH=$HOME/.local/bin:$PATH
+
 ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump/.zcomdump"
 #Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -87,6 +90,8 @@ source $ZSH/oh-my-zsh.sh
 source $ZDOTDIR/.zsh_profile
 source $ZDOTDIR/.zsh_alias
 autoload -U compinit -d $XDG_CACHE_HOME/zsh/zcompdump/.zcomdump
+# compinit
+# _comp_options+=(globdots)
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
