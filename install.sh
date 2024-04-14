@@ -1,5 +1,6 @@
 #!/bin/bash
 local DOTFILES="$( dirname -- "$BASH_SOURCE"; )";
+local NVIM="$DOTFILES/nvim/.config/nvim"
 
 local ZSH=true
 
@@ -10,6 +11,17 @@ if [ $ZSH = true ]; then
 		exit -1
 	fi
 fi
+
+
+mkdir -p $HOME/.config
+mkdir -p $HOME/.local/bin
+
+#Requirements
+sudo apt install gcc -y
+sudo apt install ripgrep -y
+sudo apt install fd-find -y
+
+ln -s $(which fdfind) $HOME/.local/bin/fd
 
 #ZSH
 if [ $ZSH = true ]; then
@@ -26,4 +38,7 @@ if [ $ZSH = true ]; then
 
 fi
 
+#Neovim
+ln -s $NVIM $HOME/.config/nvim
+ln -s $NVIM/nvim.appimage $HOME/.local/bin/nvim
 echo "Done\n"
