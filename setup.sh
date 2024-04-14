@@ -18,6 +18,7 @@ sudo apt install fuse -y
 sudo apt install gcc -y
 sudo apt install ripgrep -y
 sudo apt install fd-find -y
+sudo apt install zip -y
 
 cd $DOTFILES
 git submodule update --init
