@@ -4,6 +4,7 @@ unsetopt AUTO_CD
 VIM="nvim"
 
 export GIT_EDITOR=$VIM
+export SUDO_EDITOR="$HOME/.local/bin/nvim"
 
 #----------------
 #zsh-autocomplete
