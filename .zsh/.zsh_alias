@@ -1,3 +1,11 @@
 
 alias ls='ls -ah --color=always'
 alias vim='nvim'
+
+if [ -f /mnt/c/Windows/explorer.exe ]; then
+    alias xdg=/mnt/c/Windows/explorer.exe
+fi
+#C:\Program Files\Google\Chrome\Application
+if [ -f /mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe ]; then
+    alias chrome='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
+fi

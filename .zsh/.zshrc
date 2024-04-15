@@ -129,3 +129,5 @@ autoload -U compinit -d $XDG_CACHE_HOME/zsh/zcompdump/.zcomdump
 
 # To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
 [[ ! -f ~/.zsh/.p10k.zsh ]] || source ~/.zsh/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
