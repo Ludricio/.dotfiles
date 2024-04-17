@@ -7,7 +7,7 @@ function linkfile(){
 	if [[ -L $2 ]]; then
 		unlink $2
 	fi
-	ln -s $1 $2
+	ln -sf $1 $2
 }
 mkdir -p $HOME/.config
 mkdir -p $HOME/.local/bin
@@ -36,6 +36,9 @@ linkfile "$DOTFILES/.zsh" "$HOME/.zsh"
 #Neovim
 linkfile "$NVIM" "$HOME/.config/nvim"
 linkfile "$NVIM/nvim.appimage" "$HOME/.local/bin/nvim"
+
+#tmux
+linkfile "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
 #zsh
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"

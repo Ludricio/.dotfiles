@@ -1,3 +1,4 @@
+source $ZDOTDIR/.zsh_alias
 
 unsetopt AUTO_CD
 

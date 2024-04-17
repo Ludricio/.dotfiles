@@ -1,6 +1,8 @@
 
 alias ls='ls -ah --color=always'
 alias vim='nvim'
+alias tma='tmux attach'
+alias tm='tmux'
 
 if [ -f /mnt/c/Windows/explorer.exe ]; then
     alias xdg=/mnt/c/Windows/explorer.exe
@@ -9,3 +11,11 @@ fi
 if [ -f /mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe ]; then
     alias chrome='/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe'
 fi
+
+exit() {
+    if [[ -n $TMUX ]]; then
+        tmux detach
+    else
+        builtin exit "$@"
+    fi
+}
