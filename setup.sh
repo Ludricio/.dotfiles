@@ -3,6 +3,18 @@ DOTFILES="$HOME/.dotfiles";
 NVIM="$DOTFILES/nvim/.config/nvim"
 ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
+pkgmgr=($whereis apt)
+
+#check if first argument is the string "redhat"
+if [[ $1 == "redhat" ]]; then
+	pgkmkgr=($whereis dnf)
+	source  $DOTFILES/setup.redhat.sh
+else
+	sudo apt install ripgrep -y
+	sudo apt install fd-find -y
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+fi
+
 function linkfile(){
 	if [[ -L $2 ]]; then
 		unlink $2
@@ -16,11 +28,8 @@ sudo apt update
 sudo apt install zsh -y
 sudo apt install fuse -y 
 sudo apt install gcc -y
-sudo apt install ripgrep -y
-sudo apt install fd-find -y
 sudo apt install zip -y
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 export NVM_DIR="$HOME/.config/nvm"
 nvm install 21
 nvm use 21
