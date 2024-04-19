@@ -1,5 +1,5 @@
 
-alias ls='ls -ah --color=always'
+alias ls='ls -h --color=always'
 alias vim='nvim'
 alias tma='tmux attach'
 alias tm='tmux'
