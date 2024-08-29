@@ -37,6 +37,11 @@ nvm use 21
 cd $DOTFILES
 git submodule update --init
 
+#Git alias
+git config --global alias.lg1 "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+git config --global alias.lg2 "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
+git config --global alias.lg lg1
+
 linkfile -s $(which fdfind) $HOME/.local/bin/fd
 
 linkfile "$DOTFILES/.zsh/.zshenv" "$HOME/.zshenv"
