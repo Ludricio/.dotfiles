@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 setopt globdots 
+unsetopt BEEP
 
 export ZSH="$HOME/.oh-my-zsh"
 export XDG_CACHE_HOME="$HOME/.cache"
