@@ -2,9 +2,11 @@
 DOTFILES="$HOME/.dotfiles";
 NVIM="$DOTFILES/nvim/.config/nvim"
 ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
+export NVM_DIR="$HOME/.config/nvm"
 
 pkgmgr=($whereis apt)
 
+mkdir -p $NVM_DIR
 #check if first argument is the string "redhat"
 if [[ $1 == "redhat" ]]; then
 	pgkmkgr=($whereis dnf)
@@ -26,11 +28,14 @@ mkdir -p $HOME/.local/bin
 
 sudo apt update
 sudo apt install zsh -y
-sudo apt install fuse -y 
+sudo apt install libfuse2 -y 
 sudo apt install gcc -y
 sudo apt install zip -y
+sudo apt install make -y
 
 export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install 21
 nvm use 21
 
@@ -42,7 +47,7 @@ git config --global alias.lg1 "log --graph --abbrev-commit --decorate --format=f
 git config --global alias.lg2 "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
 git config --global alias.lg lg1
 
-linkfile -s $(which fdfind) $HOME/.local/bin/fd
+linkfile $(which fdfind) $HOME/.local/bin/fd
 
 linkfile "$DOTFILES/.zsh/.zshenv" "$HOME/.zshenv"
 linkfile "$DOTFILES/.zsh" "$HOME/.zsh"
