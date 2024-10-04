@@ -4,7 +4,7 @@ alias ll='ls -lhF --color=always'
 alias la='ls -alhF --color=always'
 alias grep='grep --color=auto'
 
-alias vim='nvim'
+#alias vim='nvim'
 alias tma='tmux attach'
 alias tm='tmux'
 
