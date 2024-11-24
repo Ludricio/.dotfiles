@@ -3,7 +3,25 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/.dotfiles/nvim/.config ~/projects ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+
+    readarray -d '' options < <(find \
+    ~/.dotfiles \
+    ~/.dotfiles/nvim/.config \
+    ~/work  \
+    ~/work/repos \
+    ~/personal \
+    ~/test \
+    -mindepth 1 \
+    -maxdepth 1 \
+    -type d -print0)    
+    
+    options+=(~/.dotfiles)
+    options+=(~/test)
+    options+=(~/work)
+    options+=(~/personal)
+    options+=(~/)
+
+    selected=$(printf '%s\n' "${options[@]}" | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -15,18 +33,18 @@ tmux_running=$(pgrep tmux)
 
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    tmux new-window -t $selected_name -c $selected
-    tmux rename-window -t $selected_name:0 nvim
-    tmux rename-window -t $selected_name:1 term
+    tmux new-session -s "$selected_name" -c "$selected"
+    tmux new-window -t "$selected_name" -c "$selected"
+    tmux rename-window -t "$selected_name":1 nvim
+    tmux rename-window -t "$selected_name":2 term
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
-    tmux new-window -t $selected_name -c $selected
-    tmux rename-window -t $selected_name:0 nvim
-    tmux rename-window -t $selected_name:1 term
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+    tmux new-window -t "$selected_name" -c "$selected"
+    tmux rename-window -t "$selected_name":1 nvim
+    tmux rename-window -t "$selected_name":2 term
 fi
 
-tmux switch-client -t $selected_name
+tmux switch-client -t "$selected_name"
