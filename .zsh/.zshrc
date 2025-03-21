@@ -6,6 +6,7 @@
 # fi
 
 setopt globdots 
+setopt ignoreeof
 unsetopt BEEP
 
 export ZSH="$HOME/.oh-my-zsh"
