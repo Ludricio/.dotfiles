@@ -23,3 +23,20 @@ exit() {
         builtin exit "$@"
     fi
 }
+
+function gs() {
+   git status
+}
+
+function gc() {
+   git commit "$@"
+}
+
+function gl() {
+   git log --pretty=format:"Commit:  %C(yellow)%H%Creset %C(auto)%d%Creset%nAuthor:  %C(green)%an%Creset%nDate:    %C(cyan)%ad%Creset%nMessage: %s%n" --date=format:"%Y-%m-%d %H:%M" --decorate=short --color=always
+}
+
+function gai() {
+   git add -i
+}
+
