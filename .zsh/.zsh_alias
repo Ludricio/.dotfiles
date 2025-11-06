@@ -32,6 +32,7 @@ function gc() {
    git commit "$@"
 }
 
+unalias gl 2>/dev/null
 function gl() {
    git log --pretty=format:"Commit:  %C(yellow)%H%Creset %C(auto)%d%Creset%nAuthor:  %C(green)%an%Creset%nDate:    %C(cyan)%ad%Creset%nMessage: %s%n" --date=format:"%Y-%m-%d %H:%M" --decorate=short --color=always
 }
